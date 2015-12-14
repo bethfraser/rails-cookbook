@@ -1,8 +1,13 @@
 
 <br><br>
 <% @recipes.each do |recipe| %>
-Title: <%= recipe.title %>
+Title: <%= recipe.title %><br>
+Description: <%= recipe.description %><br>
+<img src="<%= recipe.image %>" width="200px">
 <br><br>
 <%= link_to('Edit', edit_recipe_path(recipe)) %>
+<%= link_to('Show', recipe_path(recipe)) %>
+<%= button_to("Delete Recipe", recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure you want to delete this recipe?'}) %>
+<br><br>
 <% end %>
 

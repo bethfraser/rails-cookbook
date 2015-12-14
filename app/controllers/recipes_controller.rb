@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @category_id = params[:category_id]
+    @categories = Category.all
   end 
 
   def create

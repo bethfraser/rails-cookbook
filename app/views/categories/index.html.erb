@@ -1,0 +1,8 @@
+
+<br><br>
+<% @categories.each do |category| %>
+<h3><%= category.title %></h3>
+<%= link_to('Show', category_path(category)) %>
+<br><br>
+<% end %>
+

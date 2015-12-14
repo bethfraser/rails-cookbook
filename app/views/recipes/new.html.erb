@@ -1,0 +1,26 @@
+<h3>Add Recipe</h3>
+<%= form_for @recipe do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :ingredients %>
+  <%= f.text_field :ingredients %>
+  <br>
+  <%= f.label :method %>
+  <%= f.text_field :method %>
+  <br>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <br>
+<% @categories.each do |c| %>
+  <%= f.radio_button(:category_id, "#{c.id}") %>
+  <%= f.label(":category_id_#{c.id}", "#{c.title}") %>
+<% end %>
+
+
+  <%= f.submit 'Add Recipe' %>
+
+<% end %>

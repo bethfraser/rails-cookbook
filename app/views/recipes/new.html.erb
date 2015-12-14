@@ -17,7 +17,7 @@
   <br>
 <% @categories.each do |c| %>
   <%= f.radio_button(:category_id, "#{c.id}") %>
-  <%= f.label(":category_id_#{c.id}", "#{c.title}") %>
+  <%= f.label(":category_id_#{c.id}", "#{c.title}") %><br>
 <% end %>
 
 

@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @categories = Category.all
   end
 
   def update

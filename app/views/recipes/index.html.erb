@@ -1,6 +1,9 @@
 
 <br><br>
+
+<ul>
 <% @recipes.each do |recipe| %>
+<li>
 <h2><%= link_to("#{recipe.title}", recipe_path(recipe)) %></h2><br>
 <%= recipe.description %><br>
 <%= link_to("(#{recipe.category.title})", category_path(recipe.category_id)) %><br>
@@ -8,6 +11,7 @@
 <br>
 
 <%= button_to("Delete Recipe", recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure you want to delete this recipe?'}) %>
-<br><br>
+<br><br></li>
 <% end %>
+</ul>
 

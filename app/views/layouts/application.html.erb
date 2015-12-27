@@ -2,11 +2,13 @@
 <html>
 <head>
   <title>CookbookHomework</title>
+  <link rel="stylesheet" type="text/css" href="normalize.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
 <nav>
 <ul>
 <li><%= link_to("All Recipes", recipes_path) %></li>
@@ -14,9 +16,10 @@
 <li><%= link_to("All Categories", categories_path) %></li>
 </ul>
 </nav>
+</header>
 
-
+<section class="main">
 <%= yield %>
-
+</section>
 </body>
 </html>

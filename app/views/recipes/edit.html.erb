@@ -20,6 +20,11 @@
     <%= f.radio_button(:category_id, "#{c.id}") %>
     <%= f.label(":category_id_#{c.id}", "#{c.title}") %><br>
   <% end %>
+  <%= f.label 'Keywords' %><br>
+  <% @keywords.each do |k| %>
+    <%= f.radio_button(:keywords, "#{k.id}") %>
+    <%= f.label(":keyword_id_#{k.id}", "#{k.title}") %><br>
+  <% end %>
   <%= f.submit 'Edit Recipe' %>
 
 <% end %>

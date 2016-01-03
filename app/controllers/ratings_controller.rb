@@ -1,24 +1,10 @@
 class RatingsController < ApplicationController
 
-  # def new
-  #   @recipe = Recipe.new
-  #   @categories = Category.all
-  # end 
 
   def create
     Recipe.find(params[:rating][:recipe_id]).ratings.create(rating_params)
     redirect_to(recipe_path(params[:rating][:recipe_id]))
   end
-
-  # def show
-  #   @recipe = Recipe.find(params[:id])
-  # end
-
-  # def destroy
-  #   recipe = Recipe.find(params[:id])
-  #   recipe.destroy
-  #   redirect_to(recipes_path)
-  # end
 
   private
 

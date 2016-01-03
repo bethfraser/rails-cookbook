@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @categories = Category.all
+    @keywords = Keyword.all
   end 
 
   def create
@@ -17,6 +18,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @rating = Rating.new
+    @keywords = Recipe.find(params[:id]).keywords
   end
 
   def destroy
@@ -28,11 +30,14 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @categories = Category.all
+    @keywords = Keyword.all
   end
 
   def update
     recipe = Recipe.find(params[:id])
     recipe.update(recipe_params)
+    keyword = Keyword.find(params[:recipe][:keywords])
+    recipe.keywords << keyword
     redirect_to(recipes_path)
   end
 
@@ -40,7 +45,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     #permits these elements in the params to be accessed
-    params.require(:recipe).permit(:title, :description, :ingredients, :method, :image, :category_id)
+    params.require(:recipe).permit(:title, :description, :ingredients, :method, :image, :category_id, { :keywords => [] })
   end
 
 end

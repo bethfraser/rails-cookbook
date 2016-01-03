@@ -7,6 +7,17 @@ Description: <%= @recipe.description %> <br>
 Ingredients: <%= @recipe.ingredients %> <br>
 Method: <%= @recipe.method %> <br>
 Category: <%= link_to("#{@recipe.category.title}", category_path(@recipe.category_id)) %><br>
+Keywords: <% if @keywords.empty? %>
+None <br>
+<% else %>
+<% @keywords.each do |keyword| %>
+<%= keyword.title %> 
+<% end %>
+<br>
+<% end %>
+
+
+
 <% if @recipe.ratings.average(:rating_value) %>
 Average rating: <%= @recipe.ratings.average(:rating_value).round(2) %>
 <% else %>

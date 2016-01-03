@@ -36,8 +36,9 @@ class RecipesController < ApplicationController
   def update
     recipe = Recipe.find(params[:id])
     recipe.update(recipe_params)
-    keyword = Keyword.find(params[:recipe][:keywords])
-    recipe.keywords << keyword
+    params[:recipe][:keyword_ids] ||= []
+    keyword = Keyword.find(params[:recipe][:keyword_ids]) 
+    recipe.keywords = keyword
     redirect_to(recipes_path)
   end
 

@@ -70,11 +70,15 @@ form label {
 
 .show, input[type="submit"] {
   color: black !important;
-  font: 16px Helvetica;
+  font: 14px Helvetica;
   display: inline-block;
   background-color: #7fcccc;
   padding: 5px;
-  border-radius: 15%;
+  border-radius: 5%;
   margin: 5px;
   border: 0;
+}
+
+form.button_to {
+  display: inline-block;
 }

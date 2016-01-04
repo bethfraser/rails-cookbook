@@ -5,7 +5,12 @@
 <h4>Description:</h4>
 <%= @recipe.description %> <br>
 <h4>Ingredients:</h4> 
-<%= @recipe.ingredients %> <br>
+<% @recipe.quantities.each do |quantity| %>
+<% if quantity.unit == nil %>
+<% quantity.unit = '' %>
+<% end %>
+<%= quantity.amount %> <%= quantity.unit %> <%= quantity.ingredient.name %><% if quantity.preparation != "" %><%= ", #{quantity.preparation}" %><% end %><br>
+<% end %> 
 <h4>Method:</h4> 
 <%= @recipe.method %> <br>
 <h4>Category:</h4> 

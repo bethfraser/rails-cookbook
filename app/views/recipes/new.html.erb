@@ -6,8 +6,11 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, rows: 10, cols: 40 %>
     <br>
-    <%= f.label :ingredients %><br>
-    <%= f.text_area :ingredients, rows: 10, cols: 40 %>
+ <!-- ingredients to be added here -->
+
+
+
+
     <br>
     <%= f.label :method %><br>
     <%= f.text_area :method, rows: 20, cols: 40 %>
@@ -25,6 +28,17 @@
     <%= check_box_tag "recipe[keyword_ids][]", keyword.id, @recipe.keywords.include?(keyword) %>
     <%= keyword.title %>
     <% end %><br>
+
+    
+   
+  
+
+
+
+
+
+
+
 
 
   <%= f.submit 'Add Recipe' %>

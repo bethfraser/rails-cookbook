@@ -1,0 +1,17 @@
+
+
+
+<%= link_to("Add New Quantity", new_quantity_path) %>
+<ul>
+<% @quantities.each do |quantity| %>
+<li>
+<% if quantity.unit == nil %>
+<% quantity.unit = '' %>
+<% end %>
+<%= quantity.recipe.title %> - <%= quantity.amount %> <%= quantity.unit %> <%= quantity.ingredient.name %><% if quantity.preparation != "" %><%= ", #{quantity.preparation}" %><% end %><br>
+<%= link_to('Edit', edit_quantity_path(quantity),  class: "show") %>
+<%= button_to("Delete", quantity_path(quantity), method: :delete, data: {confirm: 'Are you sure you want to delete this quantity?'}) %><br><br>
+</li>
+<% end %>
+</ul>
+

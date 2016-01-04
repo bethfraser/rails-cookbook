@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :recipes
   resources :ratings
   resources :keywords
+  resources :ingredients
+  resources :quantities
   
   root 'recipes#index'
   # The priority is based upon order of creation: first created -> highest priority.

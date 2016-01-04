@@ -1,0 +1,20 @@
+<h3>Edit Quantity</h3>
+<%= form_for @quantity do |f| %>
+  <%= f.label :recipe_id, 'Recipe' %>
+  <%= f.select :recipe_id, Recipe.all.collect { |p| [ p.title, p.id ] } %>
+  <br>
+  <%= f.label :ingredient_id, 'Ingredient' %>
+ <%= f.select :ingredient_id, Ingredient.all.collect { |p| [ p.name, p.id ] } %>
+  <br>
+  <%= f.label :amount %>
+  <%= f.text_field :amount %>
+  <br>
+  <%= f.label :unit %>
+  <%= f.text_field :unit %>
+  <br>
+  <%= f.label :preparation, 'Preparation (e.g. peeled, chopped)' %>
+  <%= f.text_field :preparation %>
+  <br>
+  <%= f.submit 'Edit Quantity' %>
+
+<% end %>

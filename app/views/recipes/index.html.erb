@@ -9,7 +9,7 @@
 <%= recipe.description %><br><br>
 
 <% if recipe.ratings.average(:rating_value) %>
-  <% x = recipe.ratings.average(:rating_value).to_i %>
+  <% x = recipe.ratings.average(:rating_value).round(0).to_i %>
   <% x.times do%>
   <%= image_tag 'star.svg.png', size: "25x25" %>
   <% end %>

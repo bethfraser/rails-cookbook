@@ -8,6 +8,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @categories = Category.all
     @keywords = Keyword.all
+    @ingredients = Ingredient.all
+    @quantities = Quantity.all
   end 
 
   def create
@@ -50,7 +52,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     #permits these elements in the params to be accessed
-    params.require(:recipe).permit(:title, :description, :ingredients, :method, :image, :category_id, { :keywords => [] })
+    params.require(:recipe).permit(:title, :description, :ingredients, :method, :image, :category_id, { :keywords => []}, { :quantities => []})
   end
 
 end

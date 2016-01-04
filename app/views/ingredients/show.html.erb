@@ -1,0 +1,8 @@
+<h1><%= @ingredient.name.capitalize %></h1>
+
+<% @ingredient.recipes.each do |recipe| %>
+    <%= link_to("#{recipe.title}", recipe_path(recipe)) %><br>
+    <img src="<%= recipe.image%>" width="200px">
+<br><br>
+
+  <% end %>

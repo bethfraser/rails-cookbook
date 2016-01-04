@@ -8,15 +8,11 @@
 <br><br>
 <%= recipe.description %><br><br>
 
-
 <% if recipe.ratings.average(:rating_value) %>
-
   <% x = recipe.ratings.average(:rating_value).to_i %>
-
   <% x.times do%>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <%= image_tag 'star.svg.png', size: "25x25" %>
   <% end %>
-
 <% end %>
 <br><br>
 

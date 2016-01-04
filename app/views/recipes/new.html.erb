@@ -1,37 +1,49 @@
 <h3>Add Recipe</h3>
 <%= form_for @recipe do |f| %>
-  <%= f.label :title %><br>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 10, cols: 40 %>
-    <br>
- <!-- ingredients to be added here -->
+<%= f.label :title %><br>
+<%= f.text_field :title %>
+<br>
+<%= f.label :description %><br>
+<%= f.text_area :description, rows: 10, cols: 40 %>
+<br>
+
+<% 4.times do %>
+<%= f.fields_for :quantities do |quantity_form| %>
+<%= quantity_form.label :ingredient_id, 'Ingredient' %>
+<%= quantity_form.select :ingredient_id, Ingredient.all.collect { |p| [ p.name, p.id ] } %>
+<br>
+<%= quantity_form.label :amount, "Amount" %>
+<%= quantity_form.text_field :amount %>
+<%= quantity_form.label :unit %>
+<%= quantity_form.text_field :unit %>
+<%= quantity_form.label :preparation, "Preparation (e.g. peeled, chopped)" %>
+<%= quantity_form.text_field :preparation %>
+<br>
+
+<% end %>
+<% end %>
+
+<br>
+<%= f.label :method %><br>
+<%= f.text_area :method, rows: 20, cols: 40 %>
+<br>
+<%= f.label :image %><br>
+<%= f.text_field :image %>
+<br>
+<%= f.label 'Category' %><br>
+<% @categories.each do |c| %>
+<%= f.radio_button(:category_id, "#{c.id}") %>
+<%= f.label(":category_id_#{c.id}", "#{c.title}") %><br>
+<% end %>
+<%= f.label 'Keywords' %><br>
+<% @keywords.each do |keyword| %>
+<%= check_box_tag "recipe[keyword_ids][]", keyword.id, @recipe.keywords.include?(keyword) %>
+<%= keyword.title %>
+<% end %><br>
 
 
 
 
-    <br>
-    <%= f.label :method %><br>
-    <%= f.text_area :method, rows: 20, cols: 40 %>
-    <br>
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-    <br>
-    <%= f.label 'Category' %><br>
-    <% @categories.each do |c| %>
-      <%= f.radio_button(:category_id, "#{c.id}") %>
-      <%= f.label(":category_id_#{c.id}", "#{c.title}") %><br>
-    <% end %>
-    <%= f.label 'Keywords' %><br>
-    <% @keywords.each do |keyword| %>
-    <%= check_box_tag "recipe[keyword_ids][]", keyword.id, @recipe.keywords.include?(keyword) %>
-    <%= keyword.title %>
-    <% end %><br>
-
-    
-   
-  
 
 
 
@@ -41,6 +53,6 @@
 
 
 
-  <%= f.submit 'Add Recipe' %>
+<%= f.submit 'Add Recipe' %>
 
 <% end %>

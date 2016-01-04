@@ -8,8 +8,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @categories = Category.all
     @keywords = Keyword.all
-    @ingredients = Ingredient.all
-    @quantities = Quantity.all
+    @quantities = @recipe.quantities.build
+    @ingredient = @quantities.build_ingredient
+
   end 
 
   def create
@@ -37,6 +38,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @categories = Category.all
     @keywords = Keyword.all
+    @quantities = @recipe.quantities
   end
 
   def update
@@ -52,7 +54,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     #permits these elements in the params to be accessed
-    params.require(:recipe).permit(:title, :description, :ingredients, :method, :image, :category_id, { :keywords => []}, { :quantities => []})
+    params.require(:recipe).permit(:title, :description, :method, :image, :category_id, { :keywords => []}, quantities_attributes: [:id,  :ingredient_id, :amount, :unit, :preparation, ingredient_attributes: [:id, :name]])
   end
 
 end

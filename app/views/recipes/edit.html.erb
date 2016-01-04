@@ -6,8 +6,27 @@
   <%= f.label :description %><br>
   <%= f.text_area :description, rows: 10, cols: 40 %>
   <br>
-  <%= f.label :ingredients %><br>
-  <%= f.text_area :ingredients, rows: 10, cols: 40 %>
+
+  
+  <%= f.fields_for :quantities do |quantity_form| %>
+  <%= quantity_form.label :ingredient_id, 'Ingredient' %>
+  <%= quantity_form.select :ingredient_id, Ingredient.all.collect { |p| [ p.name, p.id ] } %>
+  <br>
+  <%= quantity_form.label :amount, "Amount" %>
+  <%= quantity_form.text_field :amount %>
+  <%= quantity_form.label :unit %>
+  <%= quantity_form.text_field :unit %>
+  <%= quantity_form.label :preparation, "Preparation (e.g. peeled, chopped)" %>
+  <%= quantity_form.text_field :preparation %>
+  <br>
+
+  <% end %>
+
+
+
+
+
+
   <br>
   <%= f.label :method %><br>
   <%= f.text_area :method, rows: 20, cols: 40 %>

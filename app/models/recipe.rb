@@ -4,6 +4,6 @@ class Recipe < ActiveRecord::Base
   has_and_belongs_to_many :keywords
   has_many :quantities, dependent: :destroy
   has_many :ingredients, through: :quantities
-  accepts_nested_attributes_for :quantities
+  accepts_nested_attributes_for :quantities, reject_if: :all_blank
   accepts_nested_attributes_for :ingredients
 end

@@ -39,6 +39,7 @@ class RecipesController < ApplicationController
     @categories = Category.all
     @keywords = Keyword.all
     @quantities = @recipe.quantities
+   
   end
 
   def update

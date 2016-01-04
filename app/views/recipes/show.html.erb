@@ -1,66 +1,58 @@
 
 
-
 <h2><%= @recipe.title %></h2>
 <p>
-Description: <%= @recipe.description %> <br>
-Ingredients: <%= @recipe.ingredients %> <br>
-Method: <%= @recipe.method %> <br>
-Category: <%= link_to("#{@recipe.category.title}", category_path(@recipe.category_id)) %><br>
-Keywords: <% if @keywords.empty? %>
+<h4>Description:</h4>
+<%= @recipe.description %> <br>
+<h4>Ingredients:</h4> 
+<%= @recipe.ingredients %> <br>
+<h4>Method:</h4> 
+<%= @recipe.method %> <br>
+<h4>Category:</h4> 
+<%= link_to("#{@recipe.category.title}", category_path(@recipe.category_id)) %><br>
+<h4>Keywords:</h4> 
+<% if @keywords.empty? %>
 None <br>
 <% else %>
 <% @keywords.each do |keyword| %>
-<%= keyword.title %> 
+<%= link_to("#{keyword.title}", keyword_path(keyword)) %>, 
 <% end %>
 <br>
 <% end %>
 
 
 
-<% if @recipe.ratings.average(:rating_value) %>
-Average rating: <%= @recipe.ratings.average(:rating_value).round(2) %>
+<h4>Average rating:</h4> <% if @recipe.ratings.average(:rating_value) %>
+<%= @recipe.ratings.average(:rating_value).round(2) %>
 <% else %>
-Average rating: This recipe has not yet been rated! 
+This recipe has not yet been rated! 
 <% end %>
-<br>
+<br><br>
 <img src="<%= @recipe.image %>" width="200px"><br><br>
 
 <h4>Rate this recipe:</h4>
 
 <%= form_for @rating do |f| %>
-
-
 <%= f.hidden_field(:recipe_id, value: @recipe.id) %>
 
-      <%= f.radio_button(:rating_value, "1") %>
-      <%= f.label(:rating_value, "1") %>
-      <%= f.radio_button(:rating_value, "2") %>
-      <%= f.label(:rating_value, "2") %>
-      <%= f.radio_button(:rating_value, "3") %>
-      <%= f.label(:rating_value, "3") %>
-      <%= f.radio_button(:rating_value, "4") %>
-      <%= f.label(:rating_value, "4") %>
-      <%= f.radio_button(:rating_value, "5") %>
-      <%= f.label(:rating_value, "5") %>
-    
+<%= f.radio_button(:rating_value, "1") %>
+<%= f.label(:rating_value, "1") %>
+<%= f.radio_button(:rating_value, "2") %>
+<%= f.label(:rating_value, "2") %>
+<%= f.radio_button(:rating_value, "3") %>
+<%= f.label(:rating_value, "3") %>
+<%= f.radio_button(:rating_value, "4") %>
+<%= f.label(:rating_value, "4") %>
+<%= f.radio_button(:rating_value, "5") %>
+<%= f.label(:rating_value, "5") %>
 
-
-  <%= f.submit 'Rate!' %>
+<%= f.submit 'Rate!' %>
 
 <% end %>
 
+<br>
 
-
-
-
-<br><br>
-
-<%= link_to('Edit', edit_recipe_path(@recipe)) %><br>
+<%= link_to('Edit Recipe', edit_recipe_path(@recipe),  class: "show") %><br>
 <%= button_to("Delete Recipe", recipe_path(@recipe), method: :delete, data: {confirm: 'Are you sure you want to delete this recipe?'}) %>
-
-
-
-
 </p>
 

@@ -17,6 +17,10 @@ class KeywordsController < ApplicationController
     redirect_to(keywords_path)
   end
 
+  def show
+    @keyword = Keyword.find(params[:id])
+  end
+
   def edit
     @keyword = Keyword.find(params[:id])
   end

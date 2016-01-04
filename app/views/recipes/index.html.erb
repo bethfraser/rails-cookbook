@@ -3,14 +3,39 @@
 <ul>
 <% @recipes.each do |recipe| %>
 <li>
-<h2><%= link_to("#{recipe.title}", recipe_path(recipe)) %></h2><br>
-<%= recipe.description %><br>
-<%= link_to("(#{recipe.category.title})", category_path(recipe.category_id)) %><br>
+<h2><%= link_to("#{recipe.title}", recipe_path(recipe)) %></h2>
 <img src="<%= recipe.image %>" width="200px">
-<br>
+<br><br>
+<%= recipe.description %><br><br>
 
-<%= button_to("Delete Recipe", recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure you want to delete this recipe?'}) %>
-<br><br></li>
+
+<% if recipe.ratings.average(:rating_value) %>
+
+  <% case recipe.ratings.average(:rating_value).to_i %>
+  <% when 1 %>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <% when 2 %>
+  <% 2.times do%>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <% end %>
+  <% when 3 %>
+  <% 3.times do%>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <% end %>
+  <% when 4 %>
+  <% 4.times do%>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <% end %>
+  <% when 5 %>
+  <% 5.times do%>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
+  <% end %>
+  <% end %>
+<% end %>
+<br><br>
+
+<%= link_to("(#{recipe.category.title})", category_path(recipe.category_id)) %><br><br>
+</li>
 <% end %>
 </ul>
 

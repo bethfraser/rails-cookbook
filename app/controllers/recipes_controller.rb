@@ -11,8 +11,12 @@ class RecipesController < ApplicationController
   end 
 
   def create
-    Category.find(params[:recipe][:category_id]).recipes.create(recipe_params)
+    recipe = Category.find(params[:recipe][:category_id]).recipes.create(recipe_params)
+    params[:recipe][:keyword_ids] ||= []
+    keyword = Keyword.find(params[:recipe][:keyword_ids]) 
+    recipe.keywords = keyword
     redirect_to(category_path(params[:recipe][:category_id]))
+
   end
 
   def show

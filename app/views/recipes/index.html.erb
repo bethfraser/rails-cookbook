@@ -11,26 +11,12 @@
 
 <% if recipe.ratings.average(:rating_value) %>
 
-  <% case recipe.ratings.average(:rating_value).to_i %>
-  <% when 1 %>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
-  <% when 2 %>
-  <% 2.times do%>
+  <% x = recipe.ratings.average(:rating_value).to_i %>
+
+  <% x.times do%>
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
   <% end %>
-  <% when 3 %>
-  <% 3.times do%>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
-  <% end %>
-  <% when 4 %>
-  <% 4.times do%>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
-  <% end %>
-  <% when 5 %>
-  <% 5.times do%>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/768px-Gold_Star.svg.png" width="25px">
-  <% end %>
-  <% end %>
+
 <% end %>
 <br><br>
 

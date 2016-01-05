@@ -29,11 +29,11 @@ header {
   background-color: #7fcccc;
 }
 
-header h1 {
+header h1, header h1 a {
   display: inline-block;
   color: #099;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 a {
